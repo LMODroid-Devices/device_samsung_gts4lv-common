@@ -17,6 +17,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
+# Add common definitions for Qualcomm
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
+
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/samsung/gts4lv-common/gts4lv-common-vendor.mk)
 
@@ -95,7 +98,8 @@ PRODUCT_PACKAGES += \
     android.frameworks.cameraservice.common@2.0.vendor \
     android.frameworks.cameraservice.device@2.0.vendor \
     android.frameworks.cameraservice.service@2.1.vendor \
-    android.hardware.camera.provider@2.5-service.samsung \
+    android.hardware.camera.provider-service_32.samsung \
+    libcamera_metadata.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor
 
 # Charger
@@ -119,6 +123,10 @@ PRODUCT_PACKAGES += \
     init.samsung.wifi.rc \
     init.target.rc \
     ueventd.qcom.rc
+
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
 
 # Display
 PRODUCT_PACKAGES += \
@@ -184,6 +192,7 @@ PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0.vendor \
     android.hidl.base@1.0 \
     android.hidl.memory@1.0.vendor \
+    libhidlmemory.vendor:64 \
     libhidltransport \
     libhwbinder \
     libhwbinder.vendor
@@ -281,8 +290,10 @@ PRODUCT_PACKAGES += \
 # QCOM
 PRODUCT_PACKAGES += \
     libjson \
+    libjsoncpp.vendor:64 \
     libprotobuf-cpp-full-3.9.1-vendorcompat \
     libprotobuf-cpp-lite-3.9.1-vendorcompat \
+    libsqlite.vendor:64 \
     libtinyxml
 
 # QTI
@@ -342,10 +353,16 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# WiFi firmware symlinks
+PRODUCT_PACKAGES += \
+    firmware_WCNSS_qcom_cfg.ini_symlink
+
 # WiFi Display
 PRODUCT_PACKAGES += \
     android.media.audio.common.types-V2-cpp \
     libnl \
+    libion.vendor \
+    libpng.vendor:32 \
     libwfdaac_vendor
 
 PRODUCT_BOOT_JARS += \
