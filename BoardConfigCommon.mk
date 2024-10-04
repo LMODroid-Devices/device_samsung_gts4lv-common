@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
 COMMON_PATH := device/samsung/gts4lv-common
 
 # Platform
@@ -70,7 +67,6 @@ TARGET_BOOTLOADER_BOARD_NAME := sdm710
 SOONG_CONFIG_NAMESPACES += samsungCameraVars
 SOONG_CONFIG_samsungCameraVars += needs_sec_reserved_field
 SOONG_CONFIG_samsungCameraVars_needs_sec_reserved_field := true
-TARGET_USES_QTI_CAMERA_DEVICE := true
 
 # Display
 TARGET_SCREEN_DENSITY := 320
@@ -89,6 +85,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(COMMON_PATH)/framework_compatibility_matrix.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
+    hardware/samsung/vintf/samsung_framework_compatibility_matrix.xml \
     vendor/lmodroid/config/device_framework_matrix.xml
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml

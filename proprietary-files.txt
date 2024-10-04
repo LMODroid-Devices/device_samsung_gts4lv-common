@@ -1,5 +1,8 @@
 # Common proprietary files - from Samsung package version T720XXS3DWA1, unless pinned
 
+# libOmxVpp depends on libOmxCore, which is a GNU makefile target
+# lowi-server depends on libwpa_client, which is a GNU makefile target
+
 # ADSP
 vendor/bin/adsprpcd
 vendor/etc/init/vendor.qti.adsprpc-sscrpc-service.rc
@@ -9,14 +12,14 @@ vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
 
 # ANT+
--system/lib64/libantradio.so
+system/lib64/libantradio.so;DISABLE_CHECKELF
 system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
-vendor/lib64/com.qualcomm.qti.ant@1.0.so
+vendor/lib64/com.qualcomm.qti.ant@1.0.so;MODULE_SUFFIX=_vendor
 
 # Audio
 vendor/etc/dolby/dax-default.xml
-vendor/lib/hw/audio.primary.sdm710.so
+vendor/lib/hw/audio.primary.sdm710.so:vendor/lib/hw/audio.primary.qcom.so;FIX_SONAME
 vendor/lib/lib_SamsungRec_07010.so
 vendor/lib/lib_SoundAlive_SRC384_ver320.so
 vendor/lib/lib_soundaliveresampler.so
@@ -138,13 +141,13 @@ vendor/lib/libhypermotion_interface.so
 vendor/lib/libllhdr_interface.so
 vendor/lib/liblow_light_hdr.so
 vendor/lib/libmfhdr_interface.so
-vendor/lib/libmmcamera_faceproc.so
+vendor/lib/libmmcamera_faceproc.so;DISABLE_CHECKELF
 vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmpbase.so
 vendor/lib/libswregistrationalgo.so
 vendor/lib/libuniapi.so
 vendor/lib/libuniplugin.so
-vendor/lib/libvdis_core.so
+vendor/lib/libvdis_core.so;DISABLE_CHECKELF
 vendor/lib/libvdis_interface.so
 
 # Camera - Firmware
@@ -155,13 +158,6 @@ vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
 vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
 vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
-
-# Device Health
-vendor/bin/hw/android.hardware.health@2.1-service-samsung
-vendor/etc/init/android.hardware.health@2.1-service-samsung.rc
-vendor/etc/vintf/manifest/android.hardware.health@2.1-samsung.xml
-vendor/lib64/hw/android.hardware.health@2.0-impl-2.1-samsung.so
-vendor/lib64/vendor.samsung.hardware.health@2.0.so
 
 # Display (HDR)
 vendor/lib/libhdr_tm.so
@@ -259,22 +255,21 @@ vendor/lib/libbauthtzcommon.so
 vendor/lib/libegis_fp_normal_sensor_test.so
 vendor/lib/libgf_in_system_lib.so
 vendor/lib/libqfp_sensortest.so
-vendor/lib/libsynaFpSensorTestNwd.so
+vendor/lib/libsynaFpSensorTestNwd.so;DISABLE_CHECKELF
 vendor/lib64/libbauthserver.so
 vendor/lib64/libbauthtzcommon.so
 vendor/lib64/libegis_fp_normal_sensor_test.so
 vendor/lib64/libgf_in_system_lib.so
 vendor/lib64/libqfp_sensortest.so
-vendor/lib64/libsynaFpSensorTestNwd.so
+vendor/lib64/libsynaFpSensorTestNwd.so;DISABLE_CHECKELF
 
 # Gatekeeper
-vendor/etc/init/android.hardware.gatekeeper@1.0-service.rc
 vendor/lib64/hw/gatekeeper.mdfpp.so
 
 # GNSS
 vendor/bin/hw/android.hardware.gnss@2.1-service-qti
 vendor/bin/loc_launcher
-vendor/bin/lowi-server
+vendor/bin/lowi-server;DISABLE_CHECKELF
 vendor/bin/xtra-daemon
 vendor/etc/init/android.hardware.gnss@2.1-service-qti.rc
 vendor/etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml
@@ -412,7 +407,7 @@ vendor/lib64/libkeymaster_helper.so
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
--vendor/lib64/libskeymaster4device.so
+vendor/lib64/libskeymaster4device.so
 
 # Machine Learning
 vendor/etc/lm/AdaptLaunchFeature.xml
@@ -421,48 +416,30 @@ vendor/lib64/libmeters.so
 vendor/lib64/libreffeature.so
 
 # OMX
-vendor/lib/libAlacSwDec.so
-vendor/lib/libApeSwDec.so
-vendor/lib/libFlacSwDec.so
-vendor/lib/libMpeg4SwEncoder.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAlacDec.so
-vendor/lib/libOmxAlacDecSw.so
 vendor/lib/libOmxAmrDec.so
 vendor/lib/libOmxAmrwbplusDec.so
 vendor/lib/libOmxApeDec.so
-vendor/lib/libOmxApeDecSw.so
 vendor/lib/libOmxDsdDec.so
 vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxG711Dec.so
 vendor/lib/libOmxQcelp13Dec.so
-vendor/lib/libOmxSwVdec.so
-vendor/lib/libOmxSwVencMpeg4.so
-vendor/lib/libOmxVpp.so
+vendor/lib/libOmxVpp.so;DISABLE_CHECKELF
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libdsd2pcm.so
-vendor/lib/libmmosal.so
-vendor/lib/libswvdec.so
-vendor/lib64/libAlacSwDec.so
-vendor/lib64/libApeSwDec.so
-vendor/lib64/libFlacSwDec.so
-vendor/lib64/libMpeg4SwEncoder.so
+vendor/lib/libmmosal.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libOmxAacDec.so
 vendor/lib64/libOmxAlacDec.so
-vendor/lib64/libOmxAlacDecSw.so
 vendor/lib64/libOmxAmrDec.so
 vendor/lib64/libOmxAmrwbplusDec.so
 vendor/lib64/libOmxApeDec.so
-vendor/lib64/libOmxApeDecSw.so
 vendor/lib64/libOmxEvrcDec.so
 vendor/lib64/libOmxG711Dec.so
 vendor/lib64/libOmxQcelp13Dec.so
-vendor/lib64/libOmxSwVdec.so
-vendor/lib64/libOmxSwVencMpeg4.so
-vendor/lib64/libOmxVpp.so
+vendor/lib64/libOmxVpp.so;DISABLE_CHECKELF
 vendor/lib64/libOmxWmaDec.so
-vendor/lib64/libmmosal.so
-vendor/lib64/libswvdec.so
+vendor/lib64/libmmosal.so;MODULE_SUFFIX=_vendor
 
 # Perf
 vendor/bin/hw/vendor.qti.hardware.perf@2.2-service
@@ -481,6 +458,8 @@ vendor/lib/libqti-perfd-client.so
 vendor/lib/libqti-perfd.so
 vendor/lib/libqti-util.so
 vendor/lib/libqti-utils.so
+vendor/lib/vendor.qti.memory.pasrmanager@1.0.so
+vendor/lib/vendor.qti.memory.pasrmanager@1.1.so
 vendor/lib64/libperfconfig.so
 vendor/lib64/libperfgluelayer.so
 vendor/lib64/libperfioctl.so
@@ -488,6 +467,8 @@ vendor/lib64/libqti-perfd-client.so
 vendor/lib64/libqti-perfd.so
 vendor/lib64/libqti-util.so
 vendor/lib64/libqti-utils.so
+vendor/lib64/vendor.qti.memory.pasrmanager@1.0.so
+vendor/lib64/vendor.qti.memory.pasrmanager@1.1.so
 
 # Peripheral Manager
 vendor/bin/pm-proxy
@@ -496,26 +477,6 @@ vendor/lib/libperipheral_client.so
 vendor/lib/libspcom.so
 vendor/lib64/libperipheral_client.so
 vendor/lib64/libspcom.so
-
-# Power-off charging - from gts7lwifi - RP1A.200720.012
-system/bin/lpm|ba60e7e4338c86c1efdc35e7d9fb3715fbbd3073
-system/lib64/libmaet.so
-system/lib64/libsxqk_skia.so
-system/media/battery_error.spi
-system/media/battery_low.spi
-system/media/battery_temperature_error.spi
-system/media/battery_temperature_limit.spi
-system/media/battery_water_usb.spi
-system/media/charging_New_Fast.spi
-system/media/charging_New_Normal.spi
-system/media/dock_error_usb.spi
-system/media/incomplete_connect.spi
-system/media/lcd_density.txt
-system/media/percentage.spi
-system/media/safety_timer_usb.spi
-system/media/slow_charging_usb.spi
-system/media/temperature_limit_usb.spi
-system/media/water_protection_usb.spi
 
 # QMI
 vendor/bin/irsc_util
@@ -528,11 +489,9 @@ vendor/etc/init/vendor.qti.tftp.rc
 vendor/etc/sec_config
 vendor/lib/libdiag.so
 vendor/lib/libdiagjni.so
-vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
 vendor/lib/libmdmdetect.so
-vendor/lib/libqcci_legacy.so
 vendor/lib/libqcmaputils.so
 vendor/lib/libqdi.so
 vendor/lib/libqmi.so
@@ -547,11 +506,9 @@ vendor/lib/libqrtr.so
 vendor/lib/libqsocket.so
 vendor/lib64/libdiag.so
 vendor/lib64/libdiagjni.so
-vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libdsutils.so
 vendor/lib64/libidl.so
 vendor/lib64/libmdmdetect.so
-vendor/lib64/libqcci_legacy.so
 vendor/lib64/libqcmaputils.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqmi.so
@@ -612,19 +569,18 @@ vendor/etc/sensors/config/veml3328_0.json
 vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sns_reg_config
 vendor/lib/libsensorlistener.so
-vendor/lib/libsensorndkbridge.so
 vendor/lib/libsensorslog.so
 vendor/lib/libsns_device_mode_stub.so
 vendor/lib/libsns_fastRPC_util.so
 vendor/lib/libsns_low_lat_stream_stub.so
 vendor/lib/libsns_registry_skel.so
 vendor/lib/libsnsapi.so
+vendor/lib/libsnsdiaglog.so
 vendor/lib/libssc.so
 vendor/lib/libssc_default_listener.so
 vendor/lib/sensors.grip.so
 vendor/lib/sensors.ssc.so
 vendor/lib64/libnanopb.so
-vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libsensorslog.so
 vendor/lib64/libsns_device_mode_stub.so
 vendor/lib64/libsns_fastRPC_util.so
@@ -771,7 +727,7 @@ system_ext/lib/libwfdmminterface.so|5844114d7cc823090a70fe4f44cbda0ddf585ebd
 system_ext/lib/libwfdmmsink.so|23fb5c836fc06865b229c30b46998e41c0624dac
 system_ext/lib/libwfdmmsrc_system.so|0adfc69a5560158f3a6803ba720acc795d6d05dc
 system_ext/lib/libwfdrtsp.so|afd69963c2bd59bdb3ff23e01710c61ed90c5d87
-system_ext/lib/libwfdservice.so|07e6d0e00393a8c068f75b46531d2e75fdaebde2
+system_ext/lib/libwfdservice.so|07e6d0e00393a8c068f75b46531d2e75fdaebde2|b4bc915b0bb0c4b089c9d3f0cea6a51cc734582a
 system_ext/lib/libwfdsinksm.so|875171cc6ae534dd941eec1c87b78d5961e19c06
 system_ext/lib/libwfduibcinterface.so|e90fa4920b010bd6ef2bd78c2d2644cbd0fcbffa
 system_ext/lib/libwfduibcsink.so|91af548471c395a958e6155dd9be19cccbe482d3
@@ -831,6 +787,6 @@ vendor/lib/libwfduibcsinkinterface_proprietary.so|64b802f12ffb30418a072d0ebf3c26
 vendor/lib/libwfduibcsrc_proprietary.so|b78df6ab7acb850f2adb875ccecb1a3c3539f4d2
 vendor/lib/libwfduibcsrcinterface_proprietary.so|91837ba6b6692e1d553ece3aa4469dd64f164a04
 vendor/lib/libwfdutils_proprietary.so|cae4c266704da4ce15b59c13f57ccf8f1391b699
-vendor/lib/vendor.qti.hardware.wifidisplaysession@1.0.so|fdba1b3c11ace4b0415be4e5944cdb288cd35f58
+vendor/lib/vendor.qti.hardware.wifidisplaysession@1.0.so;MODULE_SUFFIX=_vendor|fdba1b3c11ace4b0415be4e5944cdb288cd35f58
 vendor/lib/vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl.so|044c6cfd4bc603e4aa372ab1a3d287a8d8e5fc48
 vendor/lib64/libwfdhdcpcp.so|ba43f54ee4e34562b31c9595d2ad0639033e8fdc

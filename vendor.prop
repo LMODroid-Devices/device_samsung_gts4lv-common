@@ -40,7 +40,6 @@ vendor.audio.feature.multi_voice_session.enable=false
 vendor.audio.feature.snd_mon.enable=true
 vendor.audio.feature.spkr_prot.enable=true
 vendor.audio.feature.usb_offload.enable=true
-vendor.audio.flac.sw.decoder.24bit=true
 vendor.audio.hal.boot.timeout.ms=20000
 vendor.audio_hal.period_size=192
 vendor.audio.hw.aac.encoder=true
@@ -121,7 +120,7 @@ ro.fastbootd.available=true
 
 # Fingerprint
 ro.vendor.fingerprint.type=side
-ro.vendor.fingerprint.sensor_location=1636|325|130
+ro.vendor.fingerprint.sensor_location=1636|325|130|local:4630947232161729153
 
 # Gatekeeper
 ro.hardware.gatekeeper=mdfpp
@@ -140,9 +139,6 @@ ro.opengles.version=196610
 
 # Keystore
 ro.hardware.keystore=mdfpp
-
-# Media
-debug.stagefright.omx_default_rank=0
 
 # OEM Unlock reporting
 ro.oem_unlock_supported=1

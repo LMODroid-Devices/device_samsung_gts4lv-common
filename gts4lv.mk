@@ -56,11 +56,9 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     android.hardware.soundtrigger@2.2-impl:32 \
     audio.bluetooth.default \
-    audio.primary.sdm710:32 \
     audio.r_submix.default \
     audio.usb.default \
     cplay \
-    libaudioroute \
     libcirrusspkrprot \
     libhdmiedid \
     libhfp \
@@ -87,24 +85,13 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
 
-# Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0 \
-    android.hardware.bluetooth@1.0.vendor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor
-
 # Camera
 PRODUCT_PACKAGES += \
-    android.frameworks.cameraservice.common@2.0.vendor \
-    android.frameworks.cameraservice.device@2.0.vendor \
-    android.frameworks.cameraservice.service@2.1.vendor \
-    android.hardware.camera.provider-service_32.samsung \
-    libcamera_metadata.vendor \
-    vendor.qti.hardware.camera.device@1.0.vendor
+    android.hardware.camera.provider-service_32.samsung
 
 # Charger
 PRODUCT_PACKAGES += \
-    libsuspend
+    charger_res_images_vendor
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -136,16 +123,8 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     gralloc.sdm710 \
     hwcomposer.sdm710 \
-    libdisplayconfig.qti \
-    libdisplayconfig.system.qti \
-    libqdMetaData \
-    libqdMetaData.system \
     memtrack.sdm710 \
-    vendor.display.config@1.0.vendor \
-    vendor.display.config@2.0 \
-    vendor.qti.hardware.display.allocator@1.0-service \
-    vendor.qti.hardware.display.config-V5-ndk \
-    vendor.qti.hardware.display.mapper@3.0.vendor
+    vendor.qti.hardware.display.allocator@1.0-service
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
@@ -155,7 +134,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3.vendor \
     android.hardware.drm-service.clearkey
 
 # Fastboot
@@ -177,25 +155,10 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl:64 \
     android.hardware.gatekeeper@1.0-service
 
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss.measurement_corrections@1.1.vendor \
-    android.hardware.gnss.visibility_control@1.0.vendor \
-    android.hardware.gnss@2.1.vendor
-
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1.vendor
-
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.allocator@1.0.vendor \
-    android.hidl.base@1.0 \
-    android.hidl.memory@1.0.vendor \
-    libhidlmemory.vendor:64 \
-    libhidltransport \
-    libhwbinder \
-    libhwbinder.vendor
+    android.hardware.health-service.samsung \
+    android.hardware.health-service.samsung-recovery
 
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
@@ -215,8 +178,7 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0-service.samsung \
-    libkeymaster4_1support.vendor:64
+    android.hardware.keymaster@4.0-service.samsung
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -226,14 +188,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml
 
 PRODUCT_PACKAGES += \
-    libavservices_minijail \
-    libavservices_minijail.vendor \
     libc2dcolorconvert \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -281,32 +240,11 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service-qti \
-    android.hardware.power@1.2.vendor \
-    vendor.qti.hardware.perf@2.0.vendor \
-    vendor.qti.hardware.perf@2.1.vendor \
-    vendor.qti.hardware.perf@2.2.vendor
-
-# QCOM
-PRODUCT_PACKAGES += \
-    libjson \
-    libjsoncpp.vendor:64 \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat \
-    libsqlite.vendor:64 \
-    libtinyxml
-
-# QTI
-PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect.vendor
+    android.hardware.power-service-qti
 
 # Recovery
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc
-
-# RenderScript HAL
-PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
 
 # Seccomp
 PRODUCT_COPY_FILES += \
@@ -314,28 +252,16 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.frameworks.sensorservice@1.0.vendor \
-    android.hardware.sensors@2.0-service.multihal
+    android.hardware.sensors-service.samsung-multihal
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/samsung
 
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0.vendor
-
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service-qti
-
-# VNDK
-PRODUCT_PACKAGES += \
-    libcrypto-v33
-
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v30/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v30.so
 
 # WiFi
 PRODUCT_COPY_FILES += \
@@ -358,13 +284,6 @@ PRODUCT_PACKAGES += \
     firmware_WCNSS_qcom_cfg.ini_symlink
 
 # WiFi Display
-PRODUCT_PACKAGES += \
-    android.media.audio.common.types-V2-cpp \
-    libnl \
-    libion.vendor \
-    libpng.vendor:32 \
-    libwfdaac_vendor
-
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
